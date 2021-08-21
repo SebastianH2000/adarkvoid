@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="gameWindow">
+       
+      
+      
+      <div id="tabContainer">
+        <div onclick="switchTab('main')" id="mainTab" class="tabBtn">Main</div>
+        <div onclick="switchTab('options')" id="optionsTab" class="tabBtn">Options</div>
+        <div id="logTab" class="tabBtn">Log</div>
+      </div>
+    
+      <div id="subTabContainer">
+        <div id="mainSubTabContainer" class="subTabContainer">
+          <div onclick="switchSubTab('main', 'Materials')" id="mainMaterialsSubTab" class="tabBtn subTabBtn">Materials</div>
+          <div onclick="switchSubTab('main', 'Upgrades')" id="mainUpgradesSubTab" class="tabBtn subTabBtn">Upgrades</div>
+        </div>
+        <div id="optionsSubTabContainer" class="subTabContainer">
+          <div onclick="switchSubTab('options', 'Settings')" id="optionsSettingsSubTab" class="tabBtn subTabBtn">Settings</div>
+          <div onclick="switchSubTab('options', 'Credits')" id="optionsCreditsSubTab" class="tabBtn subTabBtn">Credits</div>
+          <div onclick="switchSubTab('options', 'Stats')" id="optionsStatsSubTab" class="tabBtn subTabBtn">Stats</div>
+        </div>
+      </div>
+      
+      <div id="mainContainer">
+        <div id="mainMaterialsContainer" class="container">
+          <div id="particlesDisplay" class="infoBoxOne">Particles:</div>
+          <div id="particlesLostPerSecDisplay" class="infoBoxOne">Particles Lost Per Second:</div>
+          <div id="stoneDisplay" class="infoBoxTwo">Stone: </div>
+          <div id="stonePerSecDisplay" class="infoBoxTwo">Stone Per Second:</div>
+          <div onclick="gainStone(1)" id="addStoneBtn" class="menuBtn infoBoxThree">Compress 10 Particles Into 1 Stone</div>
+            <div id="stoneGeneratorContainer" class="container">
+              <div id="stoneGenerator0" class="stoneGenerator"> <div id="stoneGenerator0.1"></div> <div id="stoneGenerator0.2"></div> <div onclick="buyStoneGenerator(0)" id="stoneGenerator0.3" class="stoneGeneratorBtn"></div> </div>
+              <div id="stoneGenerator1" class="stoneGenerator"> <div id="stoneGenerator1.1"></div> <div id="stoneGenerator1.2"></div> <div onclick="buyStoneGenerator(1)" id="stoneGenerator1.3" class="stoneGeneratorBtn"></div> </div>
+              <div id="stoneGenerator2" class="stoneGenerator"> <div id="stoneGenerator2.1"></div> <div id="stoneGenerator2.2"></div> <div onclick="buyStoneGenerator(2)" id="stoneGenerator2.3" class="stoneGeneratorBtn"></div> </div>
+              <div id="stoneGenerator3" class="stoneGenerator"> <div id="stoneGenerator3.1"></div> <div id="stoneGenerator3.2"></div> <div onclick="buyStoneGenerator(3)" id="stoneGenerator3.3" class="stoneGeneratorBtn"></div> </div>
+              <div id="stoneGenerator4" class="stoneGenerator"> <div id="stoneGenerator4.1"></div> <div id="stoneGenerator4.2"></div> <div onclick="buyStoneGenerator(4)" id="stoneGenerator4.3" class="stoneGeneratorBtn"></div> </div>
+              <div id="stoneGenerator5" class="stoneGenerator"> <div id="stoneGenerator5.1"></div> <div id="stoneGenerator5.2"></div> <div onclick="buyStoneGenerator(5)" id="stoneGenerator5.3" class="stoneGeneratorBtn"></div> </div>
+              <div id="stoneGenerator6" class="stoneGenerator"> <div id="stoneGenerator6.1"></div> <div id="stoneGenerator6.2"></div> <div onclick="buyStoneGenerator(6)" id="stoneGenerator6.3" class="stoneGeneratorBtn"></div> </div>
+              <div id="stoneGenerator7" class="stoneGenerator"> <div id="stoneGenerator7.1"></div> <div id="stoneGenerator7.2"></div> <div onclick="buyStoneGenerator(7)" id="stoneGenerator7.3" class="stoneGeneratorBtn"></div> </div>
+              <div id="stoneGenerator8" class="stoneGenerator"> <div id="stoneGenerator8.1"></div> <div id="stoneGenerator8.2"></div> <div onclick="buyStoneGenerator(8)" id="stoneGenerator8.3" class="stoneGeneratorBtn"></div> </div>
+              <div id="stoneGenerator9" class="stoneGenerator"> <div id="stoneGenerator9.1"></div> <div id="stoneGenerator9.2"></div> <div onclick="buyStoneGenerator(9)" id="stoneGenerator9.3" class="stoneGeneratorBtn"></div> </div>
+            </div>
+        </div>
+        
+        <div id="mainUpgradesContainer" class="container">
+          <div class="menuBtn">PLACEHOLDER UPGRADES</div>
+        </div>
+      </div>
+
+      <div id="optionsContainer">
+        <div id="optionsSettingsContainer" class="container">
+          <div class="containerRow">
+            <div onclick="themeChange(1)" id="themeBtn" class="menuBtn">Current Theme: Default</div>
+            <div id="themeExample" class="">
+              <div class="themeExampleContainer"><div id="themeExample0">0</div><div id="themeExample1">1</div><div id="themeExample2">2</div><div id="themeExample3">3</div><div id="themeExample4">4</div></div><div class="themeExampleContainer"><div id="themeExample5">5</div><div id="themeExample6">6</div><div id="themeExample7">7</div><div id="themeExample8">8</div><div id="themeExample9">9</div></div>
+            </div>
+          </div>
+          <div class="containerRow">
+            <div onclick="save()" class="menuBtnSm">Save</div>
+            <div onclick="loadData()" class="menuBtnSm">Load</div>
+            <div onclick="resetSave()" class="menuBtnSm">Reset Save</div>
+          </div>
+          <div class="containerRow">
+            <div onclick="toggleAutoSave()" id="autoSaveBtn" class="menuBtn">Auto Save (Saves Once Every Second): ON</span></div>
+          </div>
+        </div>
+        
+        <div id="optionsCreditsContainer" class="container">
+          <div id="playtesterContainer" class="infoBoxOne">Playtesters:
+            <div id="falsesalsaCredits" class="baja infoBoxTwo">falsesalsa - First Person to Reach 0 Particles From the Default Starting Position of 1e4 Particles - Discord: falsesalsa#7709</div>
+          </div>
+        </div>
+        
+        <div id="optionsStatsContainer" class="container">
+          <div class="menuBtn">PLACEHOLDER STATS</div>
+        </div>
+      </div>
+    
+    </div>
+  
+</body>
+
+<script type="text/javascript" src="loop.js"></script>
+
+<script type="text/javascript" src="format.js"></script>
+<script type="text/javascript" src="player.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="scaleWindow.js"></script>
+<script type="text/javascript" src="tabsAndThemes.js"></script>
+  
+</html>
