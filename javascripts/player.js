@@ -139,6 +139,7 @@ function toggleAutoSave() {
     console.log(player.autoSave);
     if (player.autoSave === true) {
         player.autoSave = false;
+        save();
     }
     else if (player.autoSave === false) {
         player.autoSave = true;
