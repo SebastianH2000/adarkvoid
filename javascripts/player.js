@@ -29,7 +29,7 @@ var player = {
     themeViolet: ['#10001a','#31004d','#520080','#7300b3','#9300e6','#ad1aff','#bf4dff','#d180ff','#e4b3ff','#f6e5ff'],
     themeSunset: ['#1a0f00','#4d2c00','#804900','#b36600','#e68300','#ff9d1a','#ffb34d','#ffc980','#ffdeb3','#fff4e5'],
 
-    autoSave: true,
+    autoSave: false,
 };
 
 /*var defaultPlayer = {
@@ -61,6 +61,7 @@ window.onload = function() {
         switchTab('main');
         switchSubTab('main', 'materials');
         themeChange(0,themeDefault);
+        console.log('autoDefault1');
     }
     console.log('onload');
 };
@@ -70,6 +71,14 @@ window.onload = function() {
 }*/
 
 function loadData() {
+    if (localStorage.getItem("player") === "null") {
+        localStorage.setItem("player",JSON.stringify(player));
+        switchTab('main');
+        switchSubTab('main', 'materials');
+        themeChange(0,themeDefault);
+        console.log('autoDefault');
+    }
+    else {
     var saveGame = JSON.parse(localStorage.getItem("player"));
     if (typeof saveGame.particles !== "undefined") player.particles = saveGame.particles;
     if (typeof saveGame.stone !== "undefined") player.stone = saveGame.stone;
@@ -77,10 +86,18 @@ function loadData() {
     if (typeof saveGame.currentTab !== "undefined") player.currentTab = saveGame.currentTab;
     if (typeof saveGame.currentSubTab !== "undefined") player.currentSubTab = saveGame.currentSubTab;
     if (typeof saveGame.autoSave !== "undefined") player.autoSave = saveGame.autoSave;
-
+    }
+    /*if (localStorage.getItem("player") === "null") {
+        switchTab('main');
+        switchSubTab('main', 'materials');
+        themeChange(0,themeDefault);
+        console.log('autoDefault');
+    }
+    else {
     switchTab(player.currentTab);
     switchSubTab(player.currentSubTab[0], player.currentSubTab[1]);
     themeChange();
+    }*/
     console.log('loadData');
 
     //safeLoadData('stone','player');
