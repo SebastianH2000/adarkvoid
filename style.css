@@ -76,41 +76,67 @@ html, body {
     height: 22.5px;
     font-size: 16px;
   }
-  
-  .menuBtn {
-    width: 60%;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    padding: 3px 10px;
-    margin: 10px;
-    background-color: var(--primary-3);
-    transition-duration: .1s;
-  }
 
-  .menuBtnSm {
-    width: 60%;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    padding: 3px 10px;
-    margin: 10px;
-    background-color: var(--primary-3);
-    transition-duration: .1s;
-  }
+/*.menuBtnBg {
+  width: 60%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 3px 10px;
+  margin: 10px;
+  background-color: var(--primary-3);
+  transition-duration: .1s;
+}*/
   
-  .menuBtnSm:hover {
-    background-color: var(--primary-4);
-  }
+.menuBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 15px 30px;
+  margin: 10px;
+  background-color: var(--primary-3);
+  transition-duration: .1s;
+}
 
-  .menuBtn:hover {
-    background-color: var(--primary-4);
-  }
+.menuBtn:hover {
+  background-color: var(--primary-4);
+}
+
+.menuBtnSm {
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 10px;
+  background-color: var(--primary-3);
+  transition-duration: .1s;
+}
   
+.menuBtnSm:hover {
+  background-color: var(--primary-4);
+}
+
+.menuBtn.Off {
+  background-color: var(--primary-2);
+}
+
+.menuBtn.Off:hover {
+  background-color: var(--primary-2);
+}
+
+.menuBtnSm.Off {
+  background-color: var(--primary-2);
+}
+
+.menuBtnSm.Off {
+  background-color: var(--primary-2);
+}
+
   span {
     display: inline;
   }
@@ -144,6 +170,11 @@ html, body {
   #playtesterContainer {
     width: 50vw;
   }
+
+#addStoneBtn {
+  width: 400px;
+  margin: 10px 0px 20px 0px;
+}
   
 .stoneGenerator {
   width: 1000px;
@@ -152,10 +183,10 @@ html, body {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  margin: 0px 0px 10px 0px;
+  margin: 0px 0px 15px 0px;
 }
 
-.stoneGeneratorBtn {
+/*.stoneGeneratorBtn {
   width: 150px;
   height: 20px;
   display: flex;
@@ -170,7 +201,7 @@ html, body {
 
 .stoneGeneratorBtn:hover {
   background-color: var(--primary-4);
-}
+}*/
 
   .infoBoxOne {
     font-size: 24px;
