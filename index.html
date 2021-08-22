@@ -19,7 +19,7 @@
       <div id="tabContainer">
         <div onclick="switchTab('main')" id="mainTab" class="tabBtn">Main</div>
         <div onclick="switchTab('options')" id="optionsTab" class="tabBtn">Options</div>
-        <div id="logTab" class="tabBtn">Log</div>
+        <div onclick="switchTab('log')" id="logTab" class="tabBtn">Log</div>
       </div>
     
       <div id="subTabContainer">
@@ -31,6 +31,9 @@
           <div onclick="switchSubTab('options', 'Settings')" id="optionsSettingsSubTab" class="tabBtn subTabBtn">Settings</div>
           <div onclick="switchSubTab('options', 'Credits')" id="optionsCreditsSubTab" class="tabBtn subTabBtn">Credits</div>
           <div onclick="switchSubTab('options', 'Stats')" id="optionsStatsSubTab" class="tabBtn subTabBtn">Stats</div>
+        </div>
+        <div id="logSubTabContainer" class="stubTabContainer">
+          
         </div>
       </div>
       
@@ -56,8 +59,10 @@
         </div>
         
         <div id="mainUpgradesContainer" class="container">
-          <div onclick="buyStoneUpgrade(0)" id="stoneUpgrade0" class="menuBtn stoneUpgradeBtn container">Manual Compression Booster <div id="stoneUpgrade0.1"></div> <div id="stoneUpgrade0.2"></div> <div id="stoneUpgrade0.3"></div> <div id="stoneUpgrade0.4"></div> </div>
-          <div onclick="buyStoneUpgrade(1)" id="stoneUpgrade1" class="menuBtn stoneUpgradeBtn container">Automatic Compression Booster <div id="stoneUpgrade1.1"></div> <div id="stoneUpgrade1.2"></div> <div id="stoneUpgrade1.3"></div> <div id="stoneUpgrade1.4"></div> </div>
+          <div class="containerRow">
+            <div onclick="buyStoneUpgrade(0)" id="stoneUpgrade0" class="menuBtn stoneUpgradeBtn container">Manual Compression Booster <div id="stoneUpgrade0.1"></div> <div id="stoneUpgrade0.2"></div> <div id="stoneUpgrade0.3" class="infoBoxFour"></div> <div id="stoneUpgrade0.4" class="infoBoxFour"></div> </div>
+            <div onclick="buyStoneUpgrade(1)" id="stoneUpgrade1" class="menuBtn stoneUpgradeBtn container">Automatic Compression Booster <div id="stoneUpgrade1.1"></div> <div id="stoneUpgrade1.2"></div> <div id="stoneUpgrade1.3" class="infoBoxFour"></div> <div id="stoneUpgrade1.4" class="infoBoxFour"></div> </div>
+          </div>  
         </div>
       </div>
 
