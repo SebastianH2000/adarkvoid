@@ -69,6 +69,7 @@ html, body {
   
   .tabBtn:hover {
     background-color: var(--primary-4);
+    cursor: pointer;
   }
   
   .subTabBtn {
@@ -103,6 +104,7 @@ html, body {
 
 .menuBtn:hover {
   background-color: var(--primary-4);
+  cursor: pointer;
 }
 
 .menuBtnSm {
@@ -115,6 +117,7 @@ html, body {
   margin: 10px;
   background-color: var(--primary-3);
   transition-duration: .1s;
+  cursor: pointer;
 }
   
 .menuBtnSm:hover {
@@ -123,18 +126,22 @@ html, body {
 
 .menuBtn.Off {
   background-color: var(--primary-2);
+  cursor: default;
 }
 
 .menuBtn.Off:hover {
   background-color: var(--primary-2);
+  cursor: default;
 }
 
 .menuBtnSm.Off {
   background-color: var(--primary-2);
+  cursor: default;
 }
 
 .menuBtnSm.Off {
   background-color: var(--primary-2);
+  cursor: default;
 }
 
   span {
@@ -186,6 +193,11 @@ html, body {
   margin: 0px 0px 15px 0px;
 }
 
+.stoneUpgradeBtn {
+  width: 475px;
+  height: 125px;
+}
+
 /*.stoneGeneratorBtn {
   width: 150px;
   height: 20px;
@@ -217,6 +229,16 @@ html, body {
     font-size: 16px;
     font-weight: 400;
   }
+
+.infoBoxFour {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.infoBoxFive {
+  font-size: 12px;
+  font-weight: 400;
+}
   
   .baja {
     color: #63FFE0;
