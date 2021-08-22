@@ -40,23 +40,24 @@
           <div id="particlesLostPerSecDisplay" class="infoBoxOne">Particles Lost Per Second:</div>
           <div id="stoneDisplay" class="infoBoxTwo">Stone: </div>
           <div id="stonePerSecDisplay" class="infoBoxTwo">Stone Per Second:</div>
-          <div onclick="gainStone(1)" id="addStoneBtn" class="menuBtn infoBoxThree">Compress 10 Particles Into 1 Stone</div>
+          <div onclick="gainStone(1 * player.stoneUpgrades[0].mult)" id="addStoneBtn" class="menuBtn infoBoxThree"></div>
             <div id="stoneGeneratorContainer" class="container">
-              <div id="stoneGenerator0" class="stoneGenerator"> <div id="stoneGenerator0.1"></div> <div id="stoneGenerator0.2"></div> <div onclick="buyStoneGenerator(0)" id="stoneGenerator0.3" class="stoneGeneratorBtn"></div> </div>
-              <div id="stoneGenerator1" class="stoneGenerator"> <div id="stoneGenerator1.1"></div> <div id="stoneGenerator1.2"></div> <div onclick="buyStoneGenerator(1)" id="stoneGenerator1.3" class="stoneGeneratorBtn"></div> </div>
-              <div id="stoneGenerator2" class="stoneGenerator"> <div id="stoneGenerator2.1"></div> <div id="stoneGenerator2.2"></div> <div onclick="buyStoneGenerator(2)" id="stoneGenerator2.3" class="stoneGeneratorBtn"></div> </div>
-              <div id="stoneGenerator3" class="stoneGenerator"> <div id="stoneGenerator3.1"></div> <div id="stoneGenerator3.2"></div> <div onclick="buyStoneGenerator(3)" id="stoneGenerator3.3" class="stoneGeneratorBtn"></div> </div>
-              <div id="stoneGenerator4" class="stoneGenerator"> <div id="stoneGenerator4.1"></div> <div id="stoneGenerator4.2"></div> <div onclick="buyStoneGenerator(4)" id="stoneGenerator4.3" class="stoneGeneratorBtn"></div> </div>
-              <div id="stoneGenerator5" class="stoneGenerator"> <div id="stoneGenerator5.1"></div> <div id="stoneGenerator5.2"></div> <div onclick="buyStoneGenerator(5)" id="stoneGenerator5.3" class="stoneGeneratorBtn"></div> </div>
-              <div id="stoneGenerator6" class="stoneGenerator"> <div id="stoneGenerator6.1"></div> <div id="stoneGenerator6.2"></div> <div onclick="buyStoneGenerator(6)" id="stoneGenerator6.3" class="stoneGeneratorBtn"></div> </div>
-              <div id="stoneGenerator7" class="stoneGenerator"> <div id="stoneGenerator7.1"></div> <div id="stoneGenerator7.2"></div> <div onclick="buyStoneGenerator(7)" id="stoneGenerator7.3" class="stoneGeneratorBtn"></div> </div>
-              <div id="stoneGenerator8" class="stoneGenerator"> <div id="stoneGenerator8.1"></div> <div id="stoneGenerator8.2"></div> <div onclick="buyStoneGenerator(8)" id="stoneGenerator8.3" class="stoneGeneratorBtn"></div> </div>
-              <div id="stoneGenerator9" class="stoneGenerator"> <div id="stoneGenerator9.1"></div> <div id="stoneGenerator9.2"></div> <div onclick="buyStoneGenerator(9)" id="stoneGenerator9.3" class="stoneGeneratorBtn"></div> </div>
+              <div id="stoneGenerator0" class="stoneGenerator"> <div id="stoneGenerator0.1"></div> <div id="stoneGenerator0.2"></div> <div onclick="buyStoneGenerator(0)" id="stoneGenerator0.3" class="stoneGeneratorBtn menuBtnSm"></div> </div>
+              <div id="stoneGenerator1" class="stoneGenerator"> <div id="stoneGenerator1.1"></div> <div id="stoneGenerator1.2"></div> <div onclick="buyStoneGenerator(1)" id="stoneGenerator1.3" class="stoneGeneratorBtn menuBtnSm"></div> </div>
+              <div id="stoneGenerator2" class="stoneGenerator"> <div id="stoneGenerator2.1"></div> <div id="stoneGenerator2.2"></div> <div onclick="buyStoneGenerator(2)" id="stoneGenerator2.3" class="stoneGeneratorBtn menuBtnSm"></div> </div>
+              <div id="stoneGenerator3" class="stoneGenerator"> <div id="stoneGenerator3.1"></div> <div id="stoneGenerator3.2"></div> <div onclick="buyStoneGenerator(3)" id="stoneGenerator3.3" class="stoneGeneratorBtn menuBtnSm"></div> </div>
+              <div id="stoneGenerator4" class="stoneGenerator"> <div id="stoneGenerator4.1"></div> <div id="stoneGenerator4.2"></div> <div onclick="buyStoneGenerator(4)" id="stoneGenerator4.3" class="stoneGeneratorBtn menuBtnSm"></div> </div>
+              <div id="stoneGenerator5" class="stoneGenerator"> <div id="stoneGenerator5.1"></div> <div id="stoneGenerator5.2"></div> <div onclick="buyStoneGenerator(5)" id="stoneGenerator5.3" class="stoneGeneratorBtn menuBtnSm"></div> </div>
+              <div id="stoneGenerator6" class="stoneGenerator"> <div id="stoneGenerator6.1"></div> <div id="stoneGenerator6.2"></div> <div onclick="buyStoneGenerator(6)" id="stoneGenerator6.3" class="stoneGeneratorBtn menuBtnSm"></div> </div>
+              <div id="stoneGenerator7" class="stoneGenerator"> <div id="stoneGenerator7.1"></div> <div id="stoneGenerator7.2"></div> <div onclick="buyStoneGenerator(7)" id="stoneGenerator7.3" class="stoneGeneratorBtn menuBtnSm"></div> </div>
+              <div id="stoneGenerator8" class="stoneGenerator"> <div id="stoneGenerator8.1"></div> <div id="stoneGenerator8.2"></div> <div onclick="buyStoneGenerator(8)" id="stoneGenerator8.3" class="stoneGeneratorBtn menuBtnSm"></div> </div>
+              <div id="stoneGenerator9" class="stoneGenerator"> <div id="stoneGenerator9.1"></div> <div id="stoneGenerator9.2"></div> <div onclick="buyStoneGenerator(9)" id="stoneGenerator9.3" class="stoneGeneratorBtn menuBtnSm"></div> </div>
             </div>
         </div>
         
         <div id="mainUpgradesContainer" class="container">
-          <div class="menuBtn">PLACEHOLDER UPGRADES</div>
+          <div onclick="buyStoneUpgrade(0)" id="stoneUpgrade0" class="menuBtn stoneUpgradeBtn container">Manual Compression Booster <div id="stoneUpgrade0.1"></div> <div id="stoneUpgrade0.2"></div> <div id="stoneUpgrade0.3"></div> <div id="stoneUpgrade0.4"></div> </div>
+          <div onclick="buyStoneUpgrade(1)" id="stoneUpgrade1" class="menuBtn stoneUpgradeBtn container">Automatic Compression Booster <div id="stoneUpgrade1.1"></div> <div id="stoneUpgrade1.2"></div> <div id="stoneUpgrade1.3"></div> <div id="stoneUpgrade1.4"></div> </div>
         </div>
       </div>
 
@@ -69,9 +70,9 @@
             </div>
           </div>
           <div class="containerRow">
-            <div onclick="save()" class="menuBtnSm">Save</div>
-            <div onclick="loadData()" class="menuBtnSm">Load</div>
-            <div onclick="resetSave()" class="menuBtnSm">Reset Save</div>
+            <div onclick="save()" class="menuBtn">Save</div>
+            <div onclick="loadData()" class="menuBtn">Load</div>
+            <div onclick="resetSave()" class="menuBtn">Reset Save</div>
           </div>
           <div class="containerRow">
             <div onclick="toggleAutoSave()" id="autoSaveBtn" class="menuBtn">Auto Save (Saves Once Every Second): ON</span></div>
@@ -94,7 +95,6 @@
 </body>
 
 <script type="text/javascript" src="javascripts/loop.js"></script>
-
 <script type="text/javascript" src="javascripts/format.js"></script>
 <script type="text/javascript" src="javascripts/player.js"></script>
 <script type="text/javascript" src="javascripts/main.js"></script>
