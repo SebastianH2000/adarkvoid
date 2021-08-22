@@ -44,7 +44,7 @@ function buyStoneGenerator(i) {
         sg.bought += 1;
         sg.amount += 1;
         sg.mult = Math.max(1,(2 ** (sg.bought - 1)));
-        sg0.mult = sg.mult = Math.max(1,(2 ** (sg.bought - 1)) * player.stoneUpgrades[1].mult);
+        sg0.mult = Math.max(1,(2 ** (sg.bought - 1)) * player.stoneUpgrades[1].mult);
         sg.cost = Math.pow(Math.pow(10, i), i + 1) * (10 ** (sg.bought * (i + 1))) * 10;
     }
 }
