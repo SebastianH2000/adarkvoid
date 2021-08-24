@@ -54,12 +54,6 @@ function maxParticles () {
     player.particles = 1e300;
 }
 
-function buyMaxAllStoneGenerators() {
-    for(let i = 0; i < 10; i++) {
-        buyMaxStoneGenerator(i);
-    }
-}
-
 function buyMaxStoneGenerator(i) {
     //Math.floor(Math.log10(((c * (r - 1)) / (b * (r ** k))) + 1) / Math.log10(r));
     let sg = player.stoneGenerators[i];
@@ -95,6 +89,12 @@ function buyMaxStoneGenerator(i) {
     }
 }
 
+function buyMaxAllStoneGenerators() {
+    for(let i = 0; i < 10; i++) {
+        buyMaxStoneGenerator(i);
+    }
+}
+
 
 
 var stoneUpgrade0 = {
@@ -119,11 +119,6 @@ var stoneUpgrade1 = {
 }
 player.stoneUpgrades.push(stoneUpgrade1);
 
-var stoneUpgrade2 = {
-
-}
-
-
 function buyStoneUpgrade(i) {
     let su = player.stoneUpgrades[i];
     if (player.stone >= su.cost) {
@@ -147,39 +142,6 @@ function buyStoneUpgrade(i) {
 }
 
 function buyMaxStoneUpgrade(i) {
-    /*//Math.floor(Math.log10(((c * (r - 1)) / (b * (r ** k))) + 1) / Math.log10(r));
-    let sg = player.stoneGenerators[i];
-    let sg0 = player.stoneGenerators[0];
-
-    //let b = Math.pow(Math.pow(10, i), i + 1) * (10 ** (sg.bought * (i + 1))) * 10;
-    let b = ((10 ** i) ** (i + 1)) * 10;
-    let r = 10 ** (i + 1);
-    //let r = i + 2;
-    //let r = Math.log10(10 ** (i + 2))// / Math.log10(10 ** (i + 1));
-    let k = sg.bought;
-    let c = player.stone;
-    console.log('buyMax() Values: '+ i + ',' + b + ',' + r + ',' + k + ',' + c);
-    let result = Math.floor(Math.log10(((c * (r - 1)) / (b * (r ** k))) + 1) / Math.log10(r));
-    console.log('Result:' + result);
-    console.log('Unfloored Result: ' + Math.log10(((c * (r - 1)) / (b * (r ** k))) + 1) / Math.log10(r));
-
-    if (result >= 1) {
-        console.log("boughtMax");
-        for (let u = 1; u < result; u++) {
-            let sgb = sg.bought + u;
-            player.stone -= Math.pow(Math.pow(10, i), i + 1) * (10 ** (sgb * (i + 1))) * 10;
-        }
-        player.stone -= sg.cost;
-        sg.bought += result;
-        sg.amount += result;
-        sg.mult = Math.max(1,(2 ** (sg.bought - 1)));
-        sg0.mult = Math.max(1,(2 ** (sg0.bought - 1)) * player.stoneUpgrades[1].mult);
-        sg.cost = Math.pow(Math.pow(10, i), i + 1) * (10 ** (sg.bought * (i + 1))) * 10;
-    }
-    else {
-        console.log("notBoughtMax");
-    }*/
-    //Math.floor(Math.log10(((c * (r - 1)) / (b * (r ** k))) + 1) / Math.log10(r));
     let su = player.stoneUpgrades[i];
 
     let b = su.baseCost;
@@ -212,6 +174,12 @@ function buyMaxStoneUpgrade(i) {
         su.mult = 2 ** su.bought;
         sg0.mult = Math.max(1,(2 ** (sg0.bought - 1)) * su.mult);
         }
+    }
+}
+
+function buyMaxAllStoneUpgrades() {
+    for(i = 0; i < 2; i++) {
+        buyMaxStoneUpgrade(i);
     }
 }
 
