@@ -102,11 +102,6 @@ html, body {
   transition-duration: .1s;
 }
 
-.menuBtn:hover {
-  background-color: var(--primary-4);
-  cursor: pointer;
-}
-
 .menuBtnSm {
   min-width: 200px;
   display: flex;
@@ -119,34 +114,34 @@ html, body {
   transition-duration: .1s;
   cursor: pointer;
 }
+
+.menuBtnTn {
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 2.5px 5px;
+  margin: 10px;
+  background-color: var(--primary-3);
+  transition-duration: .1s;
+  cursor: pointer;
+}
   
-.menuBtnSm:hover {
+.menuBtn:hover, .menuBtnSm:hover, .menuBtnTn:hover {
   background-color: var(--primary-4);
+  cursor: pointer;
 }
 
-.menuBtn.Off {
+.menuBtn.Off, .menuBtnSm.Off, .menuBtnTn.Off {
   background-color: var(--primary-2);
   cursor: default;
 }
 
-.menuBtn.Off:hover {
+.menuBtn.Off:hover, .menuBtnSm.Off:hover, .menuBtnTn.Off:hover {
   background-color: var(--primary-2);
   cursor: default;
 }
-
-.menuBtnSm.Off {
-  background-color: var(--primary-2);
-  cursor: default;
-}
-
-.menuBtnSm.Off {
-  background-color: var(--primary-2);
-  cursor: default;
-}
-
-  span {
-    display: inline;
-  }
 
   #themeBtn {
     width: 240px;
@@ -180,7 +175,7 @@ html, body {
 
 #addStoneBtn {
   width: 400px;
-  margin: 10px 0px 20px 0px;
+  margin: 10px 0px 5px 0px;
 }
   
 .stoneGenerator {
@@ -197,23 +192,6 @@ html, body {
   width: 475px;
   height: 125px;
 }
-
-/*.stoneGeneratorBtn {
-  width: 150px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
-  padding: 3px 10px;
-  margin: 10px;
-  background-color: var(--primary-3);
-  transition-duration: .1s;
-}
-
-.stoneGeneratorBtn:hover {
-  background-color: var(--primary-4);
-}*/
 
   .infoBoxOne {
     font-size: 24px;
@@ -240,9 +218,13 @@ html, body {
   font-weight: 400;
 }
   
-  .baja {
-    color: #63FFE0;
-  }
+.baja {
+  color: #63FFE0;
+}
+
+.violet {
+  color: #7000D0;
+}
   
   /*:root {
   --primary-0: #070d12;
