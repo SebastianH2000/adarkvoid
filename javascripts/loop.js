@@ -90,7 +90,7 @@ function updateDisplay() {
         document.getElementById("stoneGenerator9.3").textContent = "Cost: " + format(player.stoneGenerators[9].cost,2) + " Stone";
         if (player.stoneGeneratorsDetailed === true) {
             document.getElementById("stoneGenerator9.4").style.display = "flex";
-            document.getElementById("stoneGenerator9.4.1).style.flexDirection = "column";
+            document.getElementById("stoneGenerator9.4.1").style.flexDirection = "column";
             document.getElementById("stoneGenerator9.4.2").textContent = "x" + format(sge,2) + " To Mult";
         }
         else {
