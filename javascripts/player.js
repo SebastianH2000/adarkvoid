@@ -120,6 +120,12 @@ function loadData() {
     switchSubTab(player.currentSubTab);
     themeChange();
     }
+    if (player.stoneGeneratorsDetailed === true) {
+        document.getElementById("detailedStoneGeneratorsToggle").textContent = "Stone Generator Detailed Mode: Off";
+    }
+    else {
+        document.getElementById("detailedStoneGeneratorsToggle").textContent = "Stone Generator Detailed Mode: On";
+    }
     console.log('loadData');
 
     //safeLoadData('stone','player');
