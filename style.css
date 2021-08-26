@@ -19,7 +19,7 @@ html, body {
     text-align: center;
     font-family: 'Roboto Mono', monospace;
     user-select: none;
-
+    white-space: nowrap;
   }
   
   #tabContainer {
@@ -143,6 +143,17 @@ html, body {
   cursor: default;
 }
 
+.milestone {
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 15px 30px;
+  margin: 10px;
+  background-color: var(--primary-3);
+}
+
   #themeBtn {
     width: 240px;
   }
@@ -178,6 +189,14 @@ html, body {
   margin: 10px 0px 5px 0px;
 }
   
+#buyMaxAllStoneGeneratorsBtn {
+  margin: 10px 0px 5px 0px;
+}
+
+#detailedStoneGeneratorsToggle {
+  margin: 5px 0px 30px 0px;
+}
+
 .stoneGenerator {
   width: 1000px;
   height: 20px;
@@ -185,8 +204,48 @@ html, body {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  margin: 0px 0px 15px 0px;
+  margin: 0px 0px 25px 0px;
 }
+
+.stoneGeneratorDetail {
+  margin: 0px;
+  padding: 0px;
+}
+
+.stoneGeneratorDetailsContainer {
+  height: 30px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 10px;
+}
+
+/*.stoneGeneratorBtnSm {
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0px 10px;
+  background-color: var(--primary-3);
+  transition-duration: .1s;
+  cursor: pointer;
+}
+
+.stoneGeneratorBtnSm:hover {
+  background-color: var(--primary-4);
+  cursor: pointer;
+}
+
+.stoneGeneratorBtnSm.Off {
+  background-color: var(--primary-2);
+  cursor: default;
+}
+
+.stoneGeneratorBtnSm.Off:hover {
+  background-color: var(--primary-2);
+  cursor: default;
+}*/
 
 .stoneUpgradeBtn {
   width: 475px;
@@ -203,10 +262,10 @@ html, body {
     font-weight: 600;
   }
   
-  .infoBoxThree {
-    font-size: 16px;
-    font-weight: 400;
-  }
+.infoBoxThree {
+  font-size: 16px;
+  font-weight: 400;
+}
 
 .infoBoxFour {
   font-size: 14px;
@@ -217,6 +276,12 @@ html, body {
   font-size: 12px;
   font-weight: 400;
 }
+
+.infoBoxFiveNoMargin {
+  font-size: 12px;
+  font-weight: 400;
+  margin: 0px;
+}
   
 .baja {
   color: #63FFE0;
@@ -226,6 +291,10 @@ html, body {
   color: #7000D0;
 }
   
+.border4 {
+  border: solid 2px var(--primary-4);
+}
+
   /*:root {
   --primary-0: #070d12;
   --primary-1: #152737;
