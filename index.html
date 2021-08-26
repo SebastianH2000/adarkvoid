@@ -18,6 +18,7 @@
       
       <div id="tabContainer">
         <div onclick="switchTab('main')" id="mainTab" class="tabBtn">Main</div>
+        <div onclick="switchTab('serenity')" id="serenityTab" class="tabBtn">Serenity</div>
         <div onclick="switchTab('options')" id="optionsTab" class="tabBtn">Options</div>
         <div onclick="switchTab('log')" id="logTab" class="tabBtn">Log</div>
       </div>
@@ -26,6 +27,10 @@
         <div id="mainSubTabContainer" class="subTabContainer">
           <div onclick="switchSubTab('main', 'Materials')" id="mainMaterialsSubTab" class="tabBtn subTabBtn">Materials</div>
           <div onclick="switchSubTab('main', 'Upgrades')" id="mainUpgradesSubTab" class="tabBtn subTabBtn">Upgrades</div>
+        </div>
+        <div id="serenitySubTabContainer" class="subTabContainer">
+          <div onclick="switchSubTab('serenity','Materials')" id="serenityMaterialsSubTab" class="tabBtn subTabBtn">Materials</div>
+          <div onclick="switchSubTab('serenity','Milestones')" id="serenityMilestonesSubTab" class="tabBtn subTabBtn">Milestones</div>
         </div>
         <div id="optionsSubTabContainer" class="subTabContainer">
           <div onclick="switchSubTab('options', 'Settings')" id="optionsSettingsSubTab" class="tabBtn subTabBtn">Settings</div>
@@ -38,17 +43,22 @@
       </div>
       
       <div id="mainContainer">
-        <div id="mainMaterialsContainer" class="container">
-          <div id="particlesDisplay" class="infoBoxOne">Particles:</div>
-          <div onclick="maxParticles()" class="menuBtnSm">Make Particles = 1e300 (For Playtesting)</div>
-          <div id="particlesLostPerSecDisplay" class="infoBoxOne">Particles Lost Per Second:</div>
-          <div id="stoneDisplay" class="infoBoxTwo">Stone: </div>
-          <div id="stonePerSecDisplay" class="infoBoxTwo">Stone Per Second:</div>
-          <div onclick="gainStone(1 * player.stoneUpgrades[0].mult)" id="addStoneBtn" class="menuBtn infoBoxThree"></div>
-          <div onclick="buyMaxAllStoneGenerators()" id="buyMaxStoneGeneratorsBtn" class="menuBtnSm">Buy Max (Stone Generators)</div>
+        <div id="mainMaterialsContainerMeta" class="container">
+          <div id="particlesDisplayMeta" class="infoBoxOne">Particles:</div>
+          <div onclick="resetSerenity()" id="serenityInfoBtn" class="menuBtn infoBoxThree">Reset The Stone Layer To Gain: 1 Serenity</div>
+          <div id="mainMaterialsContainer" class="container">
+            <div id="particlesDisplay" class="infoBoxOne">Particles:</div>
+            <div onclick="maxParticles()" class="menuBtnSm">Make Particles = 1e300 (For Playtesting)</div>
+            <div id="particlesLostPerSecDisplay" class="infoBoxOne">Particles Lost Per Second:</div>
+            <div id="stoneDisplay" class="infoBoxTwo">Stone: </div>
+            <div id="stonePerSecDisplay" class="infoBoxTwo">Stone Per Second:</div>
+            <div onclick="gainStone(1 * player.stoneUpgrades[0].mult)" id="addStoneBtn" class="menuBtn infoBoxThree"></div>
+            <div onclick="buyMaxAllStoneGenerators()" id="buyMaxAllStoneGeneratorsBtn" class="menuBtnSm">Buy Max (Stone Generators)</div>
+            <div onclick="toggleDetailedStoneGenerators()" id="detailedStoneGeneratorsToggle" class="menuBtnSm">Stone Generator Detailed Mode: Off</div>
             <div id="stoneGeneratorContainer" class="container">
-              <div id="stoneGenerator0" class="stoneGenerator"> <div id="stoneGenerator0.1"></div> <div id="stoneGenerator0.2"></div> <div onclick="buyStoneGenerator(0)" id="stoneGenerator0.3" class="menuBtnSm"></div> <div onclick="buyMaxStoneGenerator(0)" id="buyMaxStoneGenerator0" class="menuBtnTn">Buy Max</div> </div>
-              <div id="stoneGenerator1" class="stoneGenerator"> <div id="stoneGenerator1.1"></div> <div id="stoneGenerator1.2"></div> <div onclick="buyStoneGenerator(1)" id="stoneGenerator1.3" class="menuBtnSm"></div> <div onclick="buyMaxStoneGenerator(1)" id="buyMaxStoneGenerator1" class="menuBtnTn">Buy Max</div> </div>
+              <!--<div id="stoneGenerator0" class="stoneGenerator"> <div id="stoneGenerator0.1"></div> <div id="stoneGenerator0.2"></div> <div> <div onclick="buyStoneGenerator(0)" id="stoneGenerator0.3" class="stoneGeneratorBtnSm"></div> <div id="stoneGenerator0.4" class="infoBoxFiveNoMargin"></div> </div> <div onclick="buyMaxStoneGenerator(0)" id="buyMaxStoneGenerator0" class="menuBtnTn">Buy Max</div> </div>-->
+              <!--
+                <div id="stoneGenerator1" class="stoneGenerator"> <div id="stoneGenerator1.1"></div> <div id="stoneGenerator1.2"></div> <div onclick="buyStoneGenerator(1)" id="stoneGenerator1.3" class="menuBtnSm"></div> <div onclick="buyMaxStoneGenerator(1)" id="buyMaxStoneGenerator1" class="menuBtnTn">Buy Max</div> </div>
               <div id="stoneGenerator2" class="stoneGenerator"> <div id="stoneGenerator2.1"></div> <div id="stoneGenerator2.2"></div> <div onclick="buyStoneGenerator(2)" id="stoneGenerator2.3" class="menuBtnSm"></div> <div onclick="buyMaxStoneGenerator(2)" id="buyMaxStoneGenerator2" class="menuBtnTn">Buy Max</div> </div>
               <div id="stoneGenerator3" class="stoneGenerator"> <div id="stoneGenerator3.1"></div> <div id="stoneGenerator3.2"></div> <div onclick="buyStoneGenerator(3)" id="stoneGenerator3.3" class="menuBtnSm"></div> <div onclick="buyMaxStoneGenerator(3)" id="buyMaxStoneGenerator3" class="menuBtnTn">Buy Max</div> </div>
               <div id="stoneGenerator4" class="stoneGenerator"> <div id="stoneGenerator4.1"></div> <div id="stoneGenerator4.2"></div> <div onclick="buyStoneGenerator(4)" id="stoneGenerator4.3" class="menuBtnSm"></div> <div onclick="buyMaxStoneGenerator(4)" id="buyMaxStoneGenerator4" class="menuBtnTn">Buy Max</div> </div>
@@ -57,7 +67,19 @@
               <div id="stoneGenerator7" class="stoneGenerator"> <div id="stoneGenerator7.1"></div> <div id="stoneGenerator7.2"></div> <div onclick="buyStoneGenerator(7)" id="stoneGenerator7.3" class="menuBtnSm"></div> <div onclick="buyMaxStoneGenerator(7)" id="buyMaxStoneGenerator7" class="menuBtnTn">Buy Max</div> </div>
               <div id="stoneGenerator8" class="stoneGenerator"> <div id="stoneGenerator8.1"></div> <div id="stoneGenerator8.2"></div> <div onclick="buyStoneGenerator(8)" id="stoneGenerator8.3" class="menuBtnSm"></div> <div onclick="buyMaxStoneGenerator(8)" id="buyMaxStoneGenerator8" class="menuBtnTn">Buy Max</div> </div>
               <div id="stoneGenerator9" class="stoneGenerator"> <div id="stoneGenerator9.1"></div> <div id="stoneGenerator9.2"></div> <div onclick="buyStoneGenerator(9)" id="stoneGenerator9.3" class="menuBtnSm"></div> <div onclick="buyMaxStoneGenerator(9)" id="buyMaxStoneGenerator9" class="menuBtnTn">Buy Max</div> </div>
+              -->
+              <div id="stoneGenerator0" class="stoneGenerator"> <div id="stoneGenerator0.1"></div> <div id="stoneGenerator0.2"></div> <div onclick="buyStoneGenerator(0)" id="stoneGenerator0.3" class="menuBtnSm"></div> <div id="stoneGenerator0.4" class="stoneGeneratorDetailsContainer"> <div id="stoneGenerator0.4.1" class="stoneGeneratorDetail">+1 To Amount</div> <br> <div id="stoneGenerator0.4.2" class="stoneGeneratorDetail"></div> </div> <div onclick="buyMaxStoneGenerator(0)" id="buyMaxStoneGenerator0" class="menuBtnTn">Buy Max</div> </div>
+              <div id="stoneGenerator1" class="stoneGenerator"> <div id="stoneGenerator1.1"></div> <div id="stoneGenerator1.2"></div> <div onclick="buyStoneGenerator(1)" id="stoneGenerator1.3" class="menuBtnSm"></div> <div id="stoneGenerator1.4" class="stoneGeneratorDetailsContainer"> <div id="stoneGenerator1.4.1" class="stoneGeneratorDetail">+1 To Amount</div> <br> <div id="stoneGenerator1.4.2" class="stoneGeneratorDetail"></div> </div> <div onclick="buyMaxStoneGenerator(1)" id="buyMaxStoneGenerator1" class="menuBtnTn">Buy Max</div> </div>
+              <div id="stoneGenerator2" class="stoneGenerator"> <div id="stoneGenerator2.1"></div> <div id="stoneGenerator2.2"></div> <div onclick="buyStoneGenerator(2)" id="stoneGenerator2.3" class="menuBtnSm"></div> <div id="stoneGenerator2.4" class="stoneGeneratorDetailsContainer"> <div id="stoneGenerator2.4.1" class="stoneGeneratorDetail">+1 To Amount</div> <br> <div id="stoneGenerator2.4.2" class="stoneGeneratorDetail"></div> </div> <div onclick="buyMaxStoneGenerator(2)" id="buyMaxStoneGenerator2" class="menuBtnTn">Buy Max</div> </div>
+              <div id="stoneGenerator3" class="stoneGenerator"> <div id="stoneGenerator3.1"></div> <div id="stoneGenerator3.2"></div> <div onclick="buyStoneGenerator(3)" id="stoneGenerator3.3" class="menuBtnSm"></div> <div id="stoneGenerator3.4" class="stoneGeneratorDetailsContainer"> <div id="stoneGenerator3.4.1" class="stoneGeneratorDetail">+1 To Amount</div> <br> <div id="stoneGenerator3.4.2" class="stoneGeneratorDetail"></div> </div> <div onclick="buyMaxStoneGenerator(3)" id="buyMaxStoneGenerator3" class="menuBtnTn">Buy Max</div> </div>
+              <div id="stoneGenerator4" class="stoneGenerator"> <div id="stoneGenerator4.1"></div> <div id="stoneGenerator4.2"></div> <div onclick="buyStoneGenerator(4)" id="stoneGenerator4.3" class="menuBtnSm"></div> <div id="stoneGenerator4.4" class="stoneGeneratorDetailsContainer"> <div id="stoneGenerator4.4.1" class="stoneGeneratorDetail">+1 To Amount</div> <br> <div id="stoneGenerator4.4.2" class="stoneGeneratorDetail"></div> </div> <div onclick="buyMaxStoneGenerator(4)" id="buyMaxStoneGenerator4" class="menuBtnTn">Buy Max</div> </div>
+              <div id="stoneGenerator5" class="stoneGenerator"> <div id="stoneGenerator5.1"></div> <div id="stoneGenerator5.2"></div> <div onclick="buyStoneGenerator(5)" id="stoneGenerator5.3" class="menuBtnSm"></div> <div id="stoneGenerator5.4" class="stoneGeneratorDetailsContainer"> <div id="stoneGenerator5.4.1" class="stoneGeneratorDetail">+1 To Amount</div> <br> <div id="stoneGenerator5.4.2" class="stoneGeneratorDetail"></div> </div> <div onclick="buyMaxStoneGenerator(5)" id="buyMaxStoneGenerator5" class="menuBtnTn">Buy Max</div> </div>
+              <div id="stoneGenerator6" class="stoneGenerator"> <div id="stoneGenerator6.1"></div> <div id="stoneGenerator6.2"></div> <div onclick="buyStoneGenerator(6)" id="stoneGenerator6.3" class="menuBtnSm"></div> <div id="stoneGenerator6.4" class="stoneGeneratorDetailsContainer"> <div id="stoneGenerator6.4.1" class="stoneGeneratorDetail">+1 To Amount</div> <br> <div id="stoneGenerator6.4.2" class="stoneGeneratorDetail"></div> </div> <div onclick="buyMaxStoneGenerator(6)" id="buyMaxStoneGenerator6" class="menuBtnTn">Buy Max</div> </div>
+              <div id="stoneGenerator7" class="stoneGenerator"> <div id="stoneGenerator7.1"></div> <div id="stoneGenerator7.2"></div> <div onclick="buyStoneGenerator(7)" id="stoneGenerator7.3" class="menuBtnSm"></div> <div id="stoneGenerator7.4" class="stoneGeneratorDetailsContainer"> <div id="stoneGenerator7.4.1" class="stoneGeneratorDetail">+1 To Amount</div> <br> <div id="stoneGenerator7.4.2" class="stoneGeneratorDetail"></div> </div> <div onclick="buyMaxStoneGenerator(7)" id="buyMaxStoneGenerator7" class="menuBtnTn">Buy Max</div> </div>
+              <div id="stoneGenerator8" class="stoneGenerator"> <div id="stoneGenerator8.1"></div> <div id="stoneGenerator8.2"></div> <div onclick="buyStoneGenerator(8)" id="stoneGenerator8.3" class="menuBtnSm"></div> <div id="stoneGenerator8.4" class="stoneGeneratorDetailsContainer"> <div id="stoneGenerator8.4.1" class="stoneGeneratorDetail">+1 To Amount</div> <br> <div id="stoneGenerator8.4.2" class="stoneGeneratorDetail"></div> </div> <div onclick="buyMaxStoneGenerator(8)" id="buyMaxStoneGenerator8" class="menuBtnTn">Buy Max</div> </div>
+              <div id="stoneGenerator9" class="stoneGenerator"> <div id="stoneGenerator9.1"></div> <div id="stoneGenerator9.2"></div> <div onclick="buyStoneGenerator(9)" id="stoneGenerator9.3" class="menuBtnSm"></div> <div id="stoneGenerator9.4" class="stoneGeneratorDetailsContainer"> <div id="stoneGenerator9.4.1" class="stoneGeneratorDetail">+1 To Amount</div> <br> <div id="stoneGenerator9.4.2" class="stoneGeneratorDetail"></div> </div> <div onclick="buyMaxStoneGenerator(9)" id="buyMaxStoneGenerator9" class="menuBtnTn">Buy Max</div> </div>
             </div>
+          </div>
         </div>
         
         <div id="mainUpgradesContainer" class="container">
@@ -71,7 +93,7 @@
               <div onclick="buyStoneUpgrade(1)" id="stoneUpgrade1" class="menuBtn stoneUpgradeBtn container">Automatic Compression Booster <div id="stoneUpgrade1.1"></div> <div id="stoneUpgrade1.2"></div> <div id="stoneUpgrade1.3" class="infoBoxFour"></div> <div id="stoneUpgrade1.4" class="infoBoxFour"></div> </div>
               <div onclick="buyMaxStoneUpgrade(1)" id="buyMaxStoneUpgrade1" class="menuBtnTn">Buy Max</div>
             </div>
-          </div>  
+          </div>
         </div>
       </div>
 
@@ -91,6 +113,8 @@
           <div class="containerRow">
             <div onclick="toggleAutoSave()" id="autoSaveBtn" class="menuBtn">Auto Save (Saves Once Every Second): ON</span></div>
           </div>
+          <div onclick="inviteToDiscord()" class="menuBtnTn">Discord</div>
+          <a id="hiddenDiscordLink" href="https://discord.gg/CQqcvWS2Kn" target="_blank"></a>
         </div>
         
         <div id="optionsCreditsContainer" class="container">
@@ -104,6 +128,22 @@
           <div class="menuBtn">PLACEHOLDER STATS</div>
         </div>
       </div>
+
+      <div id="serenityContainer">
+        <div id="serenityMaterialsContainer" class="container">
+          <div id="serenityDisplay" class="infoBoxOne">Serenities:</div>
+          <div id="totalSerenitiesMultDisplay" class="infoBoxTwo">Your Total Serenities (0) Provide a Bonus Multiplier To All Stone Generators of: x1 </div>
+          <div id="highestSerenitiesMultDisplay" class="infoBoxTwo">Your Highest Serenities (0) Past 5 Boost The Stone Generator Bought Exponent: x1</div>
+          <div id="stoneGeneratorExpDisplay" class="infoBoxThree">The Current Stone Generator Exponent: x2</div>
+        </div>
+
+        <div id="serenityMilestonesContainer" class="container">
+          <div class="containerRow">
+            <div id="serenityMilestone0" class="milestone container border4">Serenity Milestone 0 <div id="serenityMilestone0.1" class="infoBoxFour"></div> <div id="serenityMilestone0.2" class="infoBoxFour"></div> </div>
+            <div id="serenityMilestone1" class="milestone container border4">Serenity Milestone 1 <div id="serenityMilestone1.1" class="infoBoxFour"></div> <div id="serenityMilestone1.2" class="infoBoxFour"></div> </div>
+          </div>
+        </div>
+      </div>
     
     </div>
   
@@ -115,5 +155,6 @@
 <script type="text/javascript" src="javascripts/main.js"></script>
 <script type="text/javascript" src="javascripts/scaleWindow.js"></script>
 <script type="text/javascript" src="javascripts/tabsAndThemes.js"></script>
+<script type="text/javascript" src="javascripts/serenity.js"></script>
   
 </html>
