@@ -121,10 +121,10 @@ function loadData() {
     themeChange();
     }
     if (player.stoneGeneratorsDetailed === true) {
-        document.getElementById("detailedStoneGeneratorsToggle").textContent = "Stone Generator Detailed Mode: Off";
+        document.getElementById("detailedStoneGeneratorsToggle").textContent = "Stone Generator Detailed Mode: On";
     }
     else {
-        document.getElementById("detailedStoneGeneratorsToggle").textContent = "Stone Generator Detailed Mode: On";
+        document.getElementById("detailedStoneGeneratorsToggle").textContent = "Stone Generator Detailed Mode: Off";
     }
     console.log('loadData');
 
