@@ -1,2 +1,2 @@
 # adarkvoid
-An incremental game originally submitted for IGJ21 (Incremental Game Jam 2021)
+An incremental game originally submitted for IGJ2021 (Incremental Game Jam 2021)
