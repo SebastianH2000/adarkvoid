@@ -20,7 +20,7 @@
         <div onclick="switchTab('main')" id="mainTab" class="tabBtn">Main</div>
         <div onclick="switchTab('serenity')" id="serenityTab" class="tabBtn">Serenity</div>
         <div onclick="switchTab('options')" id="optionsTab" class="tabBtn">Options</div>
-        <div onclick="switchTab('log')" id="logTab" class="tabBtn">Log</div>
+        <div onclick="switchTab('transcripts')" id="transcriptsTab" class="tabBtn">Transcripts</div>
       </div>
     
       <div id="subTabContainer">
@@ -31,13 +31,14 @@
         <div id="serenitySubTabContainer" class="subTabContainer">
           <div onclick="switchSubTab('serenity','Materials')" id="serenityMaterialsSubTab" class="tabBtn subTabBtn">Materials</div>
           <div onclick="switchSubTab('serenity','Milestones')" id="serenityMilestonesSubTab" class="tabBtn subTabBtn">Milestones</div>
+          <div onclick="switchSubTab('serenity','Upgrades')" id="serenityUpgradesSubTab" class="tabBtn subTabBtn">Upgrades</div>
         </div>
         <div id="optionsSubTabContainer" class="subTabContainer">
           <div onclick="switchSubTab('options', 'Settings')" id="optionsSettingsSubTab" class="tabBtn subTabBtn">Settings</div>
           <div onclick="switchSubTab('options', 'Credits')" id="optionsCreditsSubTab" class="tabBtn subTabBtn">Credits</div>
           <div onclick="switchSubTab('options', 'Stats')" id="optionsStatsSubTab" class="tabBtn subTabBtn">Stats</div>
         </div>
-        <div id="logSubTabContainer" class="stubTabContainer">
+        <div id="transcriptsSubTabContainer" class="stubTabContainer">
           
         </div>
       </div>
@@ -52,7 +53,10 @@
             <div id="stoneDisplay" class="infoBoxTwo">Stone: </div>
             <div id="stonePerSecDisplay" class="infoBoxTwo">Stone Per Second:</div>
             <div onclick="gainStone(1 * player.stoneUpgrades[0].mult)" id="addStoneBtn" class="menuBtn infoBoxThree"></div>
-            <div onclick="buyMaxAllStoneGenerators()" id="buyMaxAllStoneGeneratorsBtn" class="menuBtnSm">Buy Max (Stone Generators)</div>
+            <div id="buyMaxAllStoneGeneratorsBtnContainer" class="containerRow">
+              <div onclick="buyMaxAllStoneGenerators()" id="buyMaxAllStoneGeneratorsBtn" class="menuBtnSm width300">Buy Max (Stone Generators)</div>
+              <div onclick="toggleStoneGeneratorAutobuyer()" id="toggleStoneGeneratorAutobuyerBtn" class="menuBtnSm width300"></div>
+            </div>
             <div onclick="toggleDetailedStoneGenerators()" id="detailedStoneGeneratorsToggle" class="menuBtnSm">Stone Generator Detailed Mode: Off</div>
             <div id="stoneGeneratorContainer" class="container">
               <!--<div id="stoneGenerator0" class="stoneGenerator"> <div id="stoneGenerator0.1"></div> <div id="stoneGenerator0.2"></div> <div> <div onclick="buyStoneGenerator(0)" id="stoneGenerator0.3" class="stoneGeneratorBtnSm"></div> <div id="stoneGenerator0.4" class="infoBoxFiveNoMargin"></div> </div> <div onclick="buyMaxStoneGenerator(0)" id="buyMaxStoneGenerator0" class="menuBtnTn">Buy Max</div> </div>-->
@@ -82,7 +86,10 @@
         </div>
         
         <div id="mainUpgradesContainer" class="container">
-          <div onclick="buyMaxAllStoneUpgrades()" id="buyMaxStoneUpgradesBtn" class="menuBtnSm">Buy Max (Stone Upgrades)</div>
+          <div class="containerRow">
+            <div onclick="buyMaxAllStoneUpgrades()" id="buyMaxStoneUpgradesBtn" class="menuBtnSm width300">Buy Max (Stone Upgrades)</div>
+            <div onclick="toggleStoneUpgradeAutobuyer()" id="toggleStoneUpgradeAutobuyerBtn" class="menuBtnSm width300"></div>
+          </div>
           <div class="containerRow">
             <div class="container">
               <div onclick="buyStoneUpgrade(0)" id="stoneUpgrade0" class="menuBtn stoneUpgradeBtn container">Manual Compression Booster <div id="stoneUpgrade0.1"></div> <div id="stoneUpgrade0.2"></div> <div id="stoneUpgrade0.3" class="infoBoxFour"></div> <div id="stoneUpgrade0.4" class="infoBoxFour"></div> </div>
@@ -118,7 +125,7 @@
         
         <div id="optionsCreditsContainer" class="container">
           <div id="playtesterContainer" class="infoBoxOne">Playtesters:
-            <div id="falsesalsaCredits" class="baja infoBoxTwo">falsesalsa - First Person to Reach 0 Particles From the Default Starting Position of 1e4 Particles - Discord: falsesalsa#7709</div>
+            <div id="falsesalsaCredits" class="baja infoBoxTwo">falsesalsa - First Person To Reach 0 Particles From The Default <br> Starting Position Of 1e4 Particles - Discord: falsesalsa#7709</div>
             <div id="CatPhishCredits" class="violet infoBoxTwo">CatPhish - Helped Playtest End Game Content</div>
           </div>
         </div>
@@ -141,6 +148,15 @@
             <div id="serenityMilestone0" class="milestone container border4">Serenity Milestone 0 <div id="serenityMilestone0.1" class="infoBoxFour"></div> <div id="serenityMilestone0.2" class="infoBoxFour"></div> </div>
             <div id="serenityMilestone1" class="milestone container border4">Serenity Milestone 1 <div id="serenityMilestone1.1" class="infoBoxFour"></div> <div id="serenityMilestone1.2" class="infoBoxFour"></div> </div>
           </div>
+          <div class="containerRow">
+            <div id="serenityMilestone2" class="milestone container border4">Serenity Milestone 2 <div id="serenityMilestone2.1" class="infoBoxFour"></div> <div id="serenityMilestone2.2" class="infoBoxFour"></div> </div>
+            <div id="serenityMilestone3" class="milestone container border4">Serenity Milestone 2 <div id="serenityMilestone3.1" class="infoBoxFour"></div> <div id="serenityMilestone3.2" class="infoBoxFour"></div> </div>
+          </div>
+          <div id="serenityMilestone4" class="milestone container border4">Serenity Milestone 2 <div id="serenityMilestone4.1" class="infoBoxFour"></div> <div id="serenityMilestone4.2" class="infoBoxFour"></div> </div>
+        </div>
+
+        <div id="serenityUpgradesContainer" class="contianer">
+          <div onclick="buySerenityUpgrade0()" id="serenityUpgrade0" class="menuBtn serenityUpgradeBtn container">Dimension Reset <div id="serenityUpgrade0.1"></div> <div id="serenityUpgrade0.2"></div> <div id="serenityUpgrade0.3" class="infoBoxFour"></div> </div>
         </div>
       </div>
     
