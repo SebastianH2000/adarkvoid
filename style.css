@@ -181,7 +181,7 @@ html, body {
   }
   
   #playtesterContainer {
-    width: 50vw;
+    width: 1200px;
   }
 
 #addStoneBtn {
@@ -189,8 +189,8 @@ html, body {
   margin: 10px 0px 5px 0px;
 }
   
-#buyMaxAllStoneGeneratorsBtn {
-  margin: 10px 0px 5px 0px;
+#buyMaxAllStoneGeneratorsBtnContainer {
+  margin: 5px 0px 5px 0px;
 }
 
 #detailedStoneGeneratorsToggle {
@@ -281,6 +281,10 @@ html, body {
   font-size: 12px;
   font-weight: 400;
   margin: 0px;
+}
+
+.width300 {
+  width: 300px;
 }
   
 .baja {
