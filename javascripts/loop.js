@@ -93,29 +93,7 @@ function mainGameLoop() {
         document.getElementById("toggleStoneUpgradeAutobuyerBtn").style.display = "none";
         document.getElementById("serenityMilestone4").style.backgroundColor = "var(--primary-3)";
     }
-    //serenity Upgrade0
-    if (player.serenityUpgrades[0].bought === true) {
-        document.getElementById("serenityUpgrade0").style.backgroundColor = "var(--primary-4)";
-        document.getElementById("serenityUpgrade0.4").textContent = "Bought: True";
-    }
-    else if (player.totalSerenities >= 50) {
-        if (!Element.prototype.matches) {
-            Element.prototype.matches = Element.prototype.msMatchesSelector ||
-                                        Element.prototype.webkitMatchesSelector;
-        }
-        if (document.getElementById("serenityUpgrade0").matches(':hover')) {
-            document.getElementById("serenityUpgrade0").style.backgroundColor = "var(--primary-4)";
-            document.getElementById("serenityUpgrade0").style.cursor = "default";
-        }
-        else {
-        document.getElementById("serenityUpgrade0").style.backgroundColor = "var(--primary-3)";
-        }
-    }
-    else if (player.serenityUpgrades[0].bought === false) {
-        document.getElementById("serenityUpgrade0").style.cursor = "default";
-        document.getElementById("serenityUpgrade0").style.backgroundColor = "var(--primary-2)";
-        document.getElementById("serenityUpgrade0.4").textContent = "Bought: False";
-    }
+    //Increment timer
     player.timer += 0.02;
 }
 
@@ -335,7 +313,29 @@ function updateDisplay() {
     
 
     //Serenity, Upgrades
-    //evaluateMenuBtn(player.totalSerenities,player.serenityUpgrades[0].cost,"serenityUpgrade0");
+    //serenity Upgrade0
+    if (player.serenityUpgrades[0].bought === true) {
+        document.getElementById("serenityUpgrade0").style.backgroundColor = "var(--primary-4)";
+        document.getElementById("serenityUpgrade0.4").textContent = "Bought: True";
+    }
+    else if (player.totalSerenities >= 50) {
+        if (!Element.prototype.matches) {
+            Element.prototype.matches = Element.prototype.msMatchesSelector ||
+                                        Element.prototype.webkitMatchesSelector;
+        }
+        if (document.getElementById("serenityUpgrade0").matches(':hover')) {
+            document.getElementById("serenityUpgrade0").style.backgroundColor = "var(--primary-4)";
+            document.getElementById("serenityUpgrade0").style.cursor = "default";
+        }
+        else {
+        document.getElementById("serenityUpgrade0").style.backgroundColor = "var(--primary-3)";
+        }
+    }
+    else if (player.serenityUpgrades[0].bought === false) {
+        document.getElementById("serenityUpgrade0").style.cursor = "default";
+        document.getElementById("serenityUpgrade0").style.backgroundColor = "var(--primary-2)";
+        document.getElementById("serenityUpgrade0.4").textContent = "Bought: False";
+    }
 
 
 
