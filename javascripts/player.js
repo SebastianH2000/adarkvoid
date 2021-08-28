@@ -85,32 +85,32 @@ var player = {
 }*/
 
 function save() {
-    localStorage.setItem("the-dark-void-saved",JSON.stringify(player));
+    localStorage.setItem("a-dark-void-save",JSON.stringify(player));
 }
 
 window.onload = function() {
-    if (localStorage.getItem('the-dark-void-saved')) {
-        let tempData = localStorage.getItem('the-dark-void-saved');
+    if (localStorage.getItem('player')) {
+        let tempData = localStorage.getItem('player');
         // check if it is the correct game save key so you don't accidentally remove another games save if they have the same key.
         let parsedData = JSON.parse(tempData);
         if (parsedData.serenities) { // doesnt have to be particles but something unique to your player object
-          localStorage.setItem("player", tempData);
-          localStorage.removeItem('the-dark-void-saved');
+          localStorage.setItem("a-dark-void-save", tempData);
+          localStorage.removeItem('player');
         }
     }
-    else if (localStorage.getItem("player") === null) {
+    else if (localStorage.getItem("a-dark-void-save") === null) {
         switchTab('main');
         switchSubTab('main', 'Materials');
         themeChange(0,'themeDefault');
         //console.log('autoDefault1');
-        localStorage.setItem("player",JSON.stringify(player));
+        localStorage.setItem("a-dark-void-save",JSON.stringify(player));
     }
     // in the function called on startup or whatever
     loadData();
 }
 
 function loadData() {
-    saveGame = JSON.parse(localStorage.getItem("player"));
+    saveGame = JSON.parse(localStorage.getItem("a-dark-void-save"));
     //console.log(saveGame.particles);
     if (typeof saveGame.timer !== "undefined") player.timer = saveGame.timer;
     if (typeof saveGame.switchedToWinTab !== "undefined") player.switchedToWinTab = saveGame.switchedToWinTab;
@@ -174,7 +174,7 @@ function loadData() {
         }
     }*/
 
-    if (localStorage.getItem("player") !== null) {
+    if (localStorage.getItem("a-dark-void-save") !== null) {
     if (typeof saveGame.currentTab !== "undefined") player.currentTab = saveGame.currentTab;
     if (typeof saveGame.currentSubTab !== "undefined") player.currentSubTab = saveGame.currentSubTab;
     if (typeof saveGame.theme !== "undefined") player.theme = saveGame.theme;
