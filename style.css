@@ -252,6 +252,19 @@ html, body {
   height: 125px;
 }
 
+.infoBoxHuge {
+  font-size: 32px;
+  font-weight: 900;
+}
+
+#timerHeader {
+  margin: 20px 0px 0px 0px;
+}
+
+#developerMessage {
+  margin: 25px 0px 20px 0px;
+}
+
   .infoBoxOne {
     font-size: 24px;
     font-weight: 800;
@@ -294,7 +307,56 @@ html, body {
 .violet {
   color: #7000D0;
 }
+
+.indigo {
+  color: #613E9A;
+}
+
+.orangeRed {
+  color: #FF8253;
+}
+
+.red {
+  color: #DF0000;
+}
+
+.coolBlue {
+  color: #849BC8;
+}
+
+.royalBlue {
+  color: #1149CB;
+}
+
+.blue {
+  color: #167BBD;
+}
+
+.blueGreen {
+  color: #007359;
+}
+
+.gold {
+  color: #FFD700;
+  font-style: italic;
+}
+
+.limeGreen {
+  color: #78FF00;
+}
+
+.emeraldGreen {
+  color: #01A415;
+}
+
+.creditContainer {
+  margin: 25px 0px 0px 0px;
+}
   
+#maxBuyInfoBox {
+  margin: 15px 0px 0px 0px;
+}
+
 .border4 {
   border: solid 2px var(--primary-4);
 }
