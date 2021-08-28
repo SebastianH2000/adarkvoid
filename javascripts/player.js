@@ -213,7 +213,7 @@ function loadData() {
         document.getElementById("toggleSerenityAutobuyerBtn").textContent = "Serenity Autobuyer: On";
     }
     else {
-        document.getElementById("toggleSerenityAutobuyerBtn").textContent = "Stone Upgrade Autobuyer: Off";
+        document.getElementById("toggleSerenityAutobuyerBtn").textContent = "Serenity Autobuyer: Off";
     }
 
     //console.log('loadData');
