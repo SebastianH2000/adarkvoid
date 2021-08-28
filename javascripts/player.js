@@ -89,28 +89,28 @@ function save() {
 }
 
 window.onload = function() {
-    if (localStorage.getItem('a-dark-void-save')) {
-        let tempData = localStorage.getItem('a-dark-void-save');
+    if (localStorage.getItem('the-dark-void-saved')) {
+        let tempData = localStorage.getItem('the-dark-void-saved');
         // check if it is the correct game save key so you don't accidentally remove another games save if they have the same key.
         let parsedData = JSON.parse(tempData);
         if (parsedData.serenities) { // doesnt have to be particles but something unique to your player object
-          localStorage.setItem("the-dark-void-saved", tempData);
-          localStorage.removeItem('a-dark-void-save');
+          localStorage.setItem("player", tempData);
+          localStorage.removeItem('the-dark-void-saved');
         }
     }
-    else if (localStorage.getItem("the-dark-void-saved") === null) {
+    else if (localStorage.getItem("player") === null) {
         switchTab('main');
         switchSubTab('main', 'Materials');
         themeChange(0,'themeDefault');
         //console.log('autoDefault1');
-        localStorage.setItem("the-dark-void-saved",JSON.stringify(player));
+        localStorage.setItem("player",JSON.stringify(player));
     }
     // in the function called on startup or whatever
     loadData();
 }
 
 function loadData() {
-    saveGame = JSON.parse(localStorage.getItem("the-dark-void-saved"));
+    saveGame = JSON.parse(localStorage.getItem("player"));
     //console.log(saveGame.particles);
     if (typeof saveGame.timer !== "undefined") player.timer = saveGame.timer;
     if (typeof saveGame.switchedToWinTab !== "undefined") player.switchedToWinTab = saveGame.switchedToWinTab;
@@ -174,7 +174,7 @@ function loadData() {
         }
     }*/
 
-    if (localStorage.getItem("the-dark-void-saved") !== null) {
+    if (localStorage.getItem("player") !== null) {
     if (typeof saveGame.currentTab !== "undefined") player.currentTab = saveGame.currentTab;
     if (typeof saveGame.currentSubTab !== "undefined") player.currentSubTab = saveGame.currentSubTab;
     if (typeof saveGame.theme !== "undefined") player.theme = saveGame.theme;
