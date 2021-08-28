@@ -296,7 +296,7 @@ function updateDisplay() {
     let sm3 = player.serenityMilestones[3];
     let sm4 = player.serenityMilestones[4];
     document.getElementById("serenityMilestone0.1").textContent = "Total Serenities Needed: " + format(sm0.cost,2);
-    document.getElementById("serenityMilestone0.2").textContent = "Effect: Start Each Run With (Total Serenities * 10)";
+    document.getElementById("serenityMilestone0.2").textContent = "Effect: Start Each Run With (Total Serenities * 10) Stone";
 
     document.getElementById("serenityMilestone1.1").textContent = "Total Serenities Needed: " + format(sm1.cost,2);
     document.getElementById("serenityMilestone1.2").textContent = "Effect: Unlock A New Stone Upgrade";
