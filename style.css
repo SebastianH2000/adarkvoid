@@ -1,207 +1,375 @@
-<!DOCTYPE html>
-<html lang="en">
+html, body {
+    padding: 0px;
+    margin: 0px;
+    background-color: var(--primary-1);
+    display: flex;
+    justify-content: center;
+  }
   
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Dark Void</title>
+  #gameWindow {
+    transform-origin: top center;
+    float: center;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+    color: var(--primary-9);
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    user-select: none;
+    white-space: nowrap;
+  }
   
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-</head>
-
-<body>
-    <div id="gameWindow">
-       
-      
-      
-      <div id="tabContainer">
-        <div onclick="switchTab('main')" id="mainTab" class="tabBtn">Main</div>
-        <div onclick="switchTab('serenity')" id="serenityTab" class="tabBtn">Serenity</div>
-        <div onclick="switchTab('options')" id="optionsTab" class="tabBtn">Options</div>
-        <div onclick="switchTab('transcripts')" id="transcriptsTab" class="tabBtn">Transcripts</div>
-        <div onclick="switchTab('winner')" id="winnerTab" class="tabBtn">You Win</div>
-      </div>
-    
-      <div id="subTabContainer">
-        <div id="mainSubTabContainer" class="subTabContainer">
-          <div onclick="switchSubTab('main', 'Materials')" id="mainMaterialsSubTab" class="tabBtn subTabBtn">Materials</div>
-          <div onclick="switchSubTab('main', 'Upgrades')" id="mainUpgradesSubTab" class="tabBtn subTabBtn">Upgrades</div>
-        </div>
-        <div id="serenitySubTabContainer" class="subTabContainer">
-          <div onclick="switchSubTab('serenity','Materials')" id="serenityMaterialsSubTab" class="tabBtn subTabBtn">Materials</div>
-          <div onclick="switchSubTab('serenity','Milestones')" id="serenityMilestonesSubTab" class="tabBtn subTabBtn">Milestones</div>
-          <div onclick="switchSubTab('serenity','Upgrades')" id="serenityUpgradesSubTab" class="tabBtn subTabBtn">Upgrades</div>
-        </div>
-        <div id="optionsSubTabContainer" class="subTabContainer">
-          <div onclick="switchSubTab('options', 'Settings')" id="optionsSettingsSubTab" class="tabBtn subTabBtn">Settings</div>
-          <div onclick="switchSubTab('options', 'Credits')" id="optionsCreditsSubTab" class="tabBtn subTabBtn">Credits</div>
-          <div onclick="switchSubTab('options', 'Stats')" id="optionsStatsSubTab" class="tabBtn subTabBtn">Stats</div>
-        </div>
-        <div id="transcriptsSubTabContainer" class="subTabContainer">
-          
-        </div>
-        <div id="winnerSubTabContainer" class="subTabContainer">
-          <div onclick="switchSubTab('winner','Win')" id="winnerWinSubTab" class="tabBtn subTabBtn">You Won</div>
-        </div>
-      </div>
-      
-      <div id="mainContainer">
-        <div id="mainMaterialsContainerMeta" class="container">
-          <div id="particlesDisplayMeta" class="infoBoxOne">Particles:</div>
-          <div onclick="resetSerenity()" id="serenityInfoBtn" class="menuBtn infoBoxThree">Reset The Stone Layer To Gain: 1 Serenity</div>
-          <div id="mainMaterialsContainer" class="container">
-            <div id="particlesDisplay" class="infoBoxOne">Particles:</div>
-            <div id="particlesLostPerSecDisplay" class="infoBoxOne">Particles Lost Per Second:</div>
-            <div id="stoneDisplay" class="infoBoxTwo">Stone: </div>
-            <div id="stonePerSecDisplay" class="infoBoxTwo">Stone Per Second:</div>
-            <div onclick="gainStone(1 * player.stoneUpgrades[0].mult)" id="addStoneBtn" class="menuBtn infoBoxThree"></div>
-            <div id="buyMaxAllStoneGeneratorsBtnContainer" class="containerRow">
-              <div onclick="buyMaxAllStoneGenerators()" id="buyMaxAllStoneGeneratorsBtn" class="menuBtnSm width300">Buy Max (Stone Generators)</div>
-              <div onclick="toggleStoneGeneratorAutobuyer()" id="toggleStoneGeneratorAutobuyerBtn" class="menuBtnSm width300"></div>
-            </div>
-            <div onclick="toggleDetailedStoneGenerators()" id="detailedStoneGeneratorsToggle" class="menuBtnSm">Stone Generator Detailed Mode: Off</div>
-            <div id="stoneGeneratorContainer" class="container">
-              <div id="stoneGenerator0" class="stoneGenerator"> <div id="stoneGenerator0.1"></div> <div id="stoneGenerator0.2"></div> <div onclick="buyStoneGenerator(0)" id="stoneGenerator0.3" class="menuBtnSm"></div> <div id="stoneGenerator0.4" class="stoneGeneratorDetailsContainer"> <div id="stoneGenerator0.4.1" class="stoneGeneratorDetail">+1 To Amount</div> <br> <div id="stoneGenerator0.4.2" class="stoneGeneratorDetail"></div> </div> <div onclick="buyMaxStoneGenerator(0)" id="buyMaxStoneGenerator0" class="menuBtnTn">Buy Max</div> </div>
-              <div id="stoneGenerator1" class="stoneGenerator"> <div id="stoneGenerator1.1"></div> <div id="stoneGenerator1.2"></div> <div onclick="buyStoneGenerator(1)" id="stoneGenerator1.3" class="menuBtnSm"></div> <div id="stoneGenerator1.4" class="stoneGeneratorDetailsContainer"> <div id="stoneGenerator1.4.1" class="stoneGeneratorDetail">+1 To Amount</div> <br> <div id="stoneGenerator1.4.2" class="stoneGeneratorDetail"></div> </div> <div onclick="buyMaxStoneGenerator(1)" id="buyMaxStoneGenerator1" class="menuBtnTn">Buy Max</div> </div>
-              <div id="stoneGenerator2" class="stoneGenerator"> <div id="stoneGenerator2.1"></div> <div id="stoneGenerator2.2"></div> <div onclick="buyStoneGenerator(2)" id="stoneGenerator2.3" class="menuBtnSm"></div> <div id="stoneGenerator2.4" class="stoneGeneratorDetailsContainer"> <div id="stoneGenerator2.4.1" class="stoneGeneratorDetail">+1 To Amount</div> <br> <div id="stoneGenerator2.4.2" class="stoneGeneratorDetail"></div> </div> <div onclick="buyMaxStoneGenerator(2)" id="buyMaxStoneGenerator2" class="menuBtnTn">Buy Max</div> </div>
-              <div id="stoneGenerator3" class="stoneGenerator"> <div id="stoneGenerator3.1"></div> <div id="stoneGenerator3.2"></div> <div onclick="buyStoneGenerator(3)" id="stoneGenerator3.3" class="menuBtnSm"></div> <div id="stoneGenerator3.4" class="stoneGeneratorDetailsContainer"> <div id="stoneGenerator3.4.1" class="stoneGeneratorDetail">+1 To Amount</div> <br> <div id="stoneGenerator3.4.2" class="stoneGeneratorDetail"></div> </div> <div onclick="buyMaxStoneGenerator(3)" id="buyMaxStoneGenerator3" class="menuBtnTn">Buy Max</div> </div>
-              <div id="stoneGenerator4" class="stoneGenerator"> <div id="stoneGenerator4.1"></div> <div id="stoneGenerator4.2"></div> <div onclick="buyStoneGenerator(4)" id="stoneGenerator4.3" class="menuBtnSm"></div> <div id="stoneGenerator4.4" class="stoneGeneratorDetailsContainer"> <div id="stoneGenerator4.4.1" class="stoneGeneratorDetail">+1 To Amount</div> <br> <div id="stoneGenerator4.4.2" class="stoneGeneratorDetail"></div> </div> <div onclick="buyMaxStoneGenerator(4)" id="buyMaxStoneGenerator4" class="menuBtnTn">Buy Max</div> </div>
-              <div id="stoneGenerator5" class="stoneGenerator"> <div id="stoneGenerator5.1"></div> <div id="stoneGenerator5.2"></div> <div onclick="buyStoneGenerator(5)" id="stoneGenerator5.3" class="menuBtnSm"></div> <div id="stoneGenerator5.4" class="stoneGeneratorDetailsContainer"> <div id="stoneGenerator5.4.1" class="stoneGeneratorDetail">+1 To Amount</div> <br> <div id="stoneGenerator5.4.2" class="stoneGeneratorDetail"></div> </div> <div onclick="buyMaxStoneGenerator(5)" id="buyMaxStoneGenerator5" class="menuBtnTn">Buy Max</div> </div>
-              <div id="stoneGenerator6" class="stoneGenerator"> <div id="stoneGenerator6.1"></div> <div id="stoneGenerator6.2"></div> <div onclick="buyStoneGenerator(6)" id="stoneGenerator6.3" class="menuBtnSm"></div> <div id="stoneGenerator6.4" class="stoneGeneratorDetailsContainer"> <div id="stoneGenerator6.4.1" class="stoneGeneratorDetail">+1 To Amount</div> <br> <div id="stoneGenerator6.4.2" class="stoneGeneratorDetail"></div> </div> <div onclick="buyMaxStoneGenerator(6)" id="buyMaxStoneGenerator6" class="menuBtnTn">Buy Max</div> </div>
-              <div id="stoneGenerator7" class="stoneGenerator"> <div id="stoneGenerator7.1"></div> <div id="stoneGenerator7.2"></div> <div onclick="buyStoneGenerator(7)" id="stoneGenerator7.3" class="menuBtnSm"></div> <div id="stoneGenerator7.4" class="stoneGeneratorDetailsContainer"> <div id="stoneGenerator7.4.1" class="stoneGeneratorDetail">+1 To Amount</div> <br> <div id="stoneGenerator7.4.2" class="stoneGeneratorDetail"></div> </div> <div onclick="buyMaxStoneGenerator(7)" id="buyMaxStoneGenerator7" class="menuBtnTn">Buy Max</div> </div>
-              <div id="stoneGenerator8" class="stoneGenerator"> <div id="stoneGenerator8.1"></div> <div id="stoneGenerator8.2"></div> <div onclick="buyStoneGenerator(8)" id="stoneGenerator8.3" class="menuBtnSm"></div> <div id="stoneGenerator8.4" class="stoneGeneratorDetailsContainer"> <div id="stoneGenerator8.4.1" class="stoneGeneratorDetail">+1 To Amount</div> <br> <div id="stoneGenerator8.4.2" class="stoneGeneratorDetail"></div> </div> <div onclick="buyMaxStoneGenerator(8)" id="buyMaxStoneGenerator8" class="menuBtnTn">Buy Max</div> </div>
-              <div id="stoneGenerator9" class="stoneGenerator"> <div id="stoneGenerator9.1"></div> <div id="stoneGenerator9.2"></div> <div onclick="buyStoneGenerator(9)" id="stoneGenerator9.3" class="menuBtnSm"></div> <div id="stoneGenerator9.4" class="stoneGeneratorDetailsContainer"> <div id="stoneGenerator9.4.1" class="stoneGeneratorDetail">+1 To Amount</div> <br> <div id="stoneGenerator9.4.2" class="stoneGeneratorDetail"></div> </div> <div onclick="buyMaxStoneGenerator(9)" id="buyMaxStoneGenerator9" class="menuBtnTn">Buy Max</div> </div>
-            </div>
-          </div>
-        </div>
-        
-        <div id="mainUpgradesContainer" class="container">
-          <div class="containerRow">
-            <div onclick="buyMaxAllStoneUpgrades()" id="buyMaxStoneUpgradesBtn" class="menuBtnSm width300">Buy Max (Stone Upgrades)</div>
-            <div onclick="toggleStoneUpgradeAutobuyer()" id="toggleStoneUpgradeAutobuyerBtn" class="menuBtnSm width300"></div>
-          </div>
-          <div class="containerRow">
-            <div class="container">
-              <div onclick="buyStoneUpgrade(0)" id="stoneUpgrade0" class="menuBtn stoneUpgradeBtn container">Manual Compression Booster <div id="stoneUpgrade0.1"></div> <div id="stoneUpgrade0.2"></div> <div id="stoneUpgrade0.3" class="infoBoxFour"></div> <div id="stoneUpgrade0.4" class="infoBoxFour"></div> </div>
-              <div onclick="buyMaxStoneUpgrade(0)" id="buyMaxStoneUpgrade0" class="menuBtnTn">Buy Max</div>
-            </div>
-            <div class="container">
-              <div onclick="buyStoneUpgrade(1)" id="stoneUpgrade1" class="menuBtn stoneUpgradeBtn container">Automatic Compression Booster <div id="stoneUpgrade1.1"></div> <div id="stoneUpgrade1.2"></div> <div id="stoneUpgrade1.3" class="infoBoxFour"></div> <div id="stoneUpgrade1.4" class="infoBoxFour"></div> </div>
-              <div onclick="buyMaxStoneUpgrade(1)" id="buyMaxStoneUpgrade1" class="menuBtnTn">Buy Max</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="optionsContainer">
-        <div id="optionsSettingsContainer" class="container">
-          <div class="containerRow">
-            <div onclick="themeChange(1)" id="themeBtn" class="menuBtn">Current Theme: Default</div>
-            <div id="themeExample" class="">
-              <div class="themeExampleContainer"><div id="themeExample0">0</div><div id="themeExample1">1</div><div id="themeExample2">2</div><div id="themeExample3">3</div><div id="themeExample4">4</div></div><div class="themeExampleContainer"><div id="themeExample5">5</div><div id="themeExample6">6</div><div id="themeExample7">7</div><div id="themeExample8">8</div><div id="themeExample9">9</div></div>
-            </div>
-          </div>
-          <div class="containerRow">
-            <div onclick="save()" class="menuBtn">Save</div>
-            <div onclick="loadData()" class="menuBtn">Load</div>
-            <div onclick="resetSave()" class="menuBtn">Reset Save</div>
-          </div>
-          <div class="containerRow">
-            <div onclick="toggleAutoSave()" id="autoSaveBtn" class="menuBtn">Auto Save (Saves Once Every Second): ON</span></div>
-          </div>
-          <div onclick="toggleTabFinder()" id="tabFinderBtn" class="menuBtnSm">Automatic SubTabs: ON</div>
-          <div onclick="inviteToDiscord()" class="menuBtnTn">Discord Link</div>
-          <a id="hiddenDiscordLink" href="https://discord.gg/CQqcvWS2Kn" target="_blank"></a>
-          <div id="maxBuyInfoBox" class="infoBoxThree">Did You Know? Pressing/Holding The 'M' Key <br> Max Buys From Whatever SubTab You Are In</div>
-        </div>
-        
-        <div id="optionsCreditsContainer" class="container">
-          <div class="infoBoxOne">Game Jam Organizers:
-            <div class="gold infoBoxOne">asterisk_man</div>
-            <div class="gold infoBoxOne">dSolver</div>
-          </div>
-          <div class="infoBoxOne creditContainer">Playtesters:
-            <div class="baja infoBoxTwo">falsesalsa - First Person To Click A Bunch</div>
-            <div class="violet infoBoxTwo">CatPhish - Helped Playtest End Game Content</div>
-            <div class="red infoBoxTwo">Scar1337 - Their Savefile Of My Game Broke, Which Helped Me Bugfix</div>
-          </div>
-          <div class="infoBoxOne creditContainer">Math/Coding Assistance:
-            <div class="orangeRed infoBoxTwo">thepaperpilot - Helped With The 'Buy Max' Formula</div>
-            <div class="coolBlue infoBoxTwo">FrozenDude101 - Helped With Motivation And JS Organizational Tips</div>
-            <div class="blue infoBoxTwo">Hevipelle - From Whom I Stole My Formatting Function</div>
-          </div>
-          <div class="infoBoxOne creditContainer">UI Feedback:
-            <div class="limeGreen infoBoxTwo">Jayman - Helped With The Tabs & The SubTabs</div>
-            <div class="royalBlue infoBoxTwo">dillydally - Gave Feedback & Suggestions On The Tabs</div>
-            <div class="violet infoBoxTwo">myname - Also Gave Feedback & Suggestions On The Tabs</div>
-            <div class="blueGreen infoBoxTwo">Climber - Also Gave Feedback & Suggestions On The Tabs</div>
-            <div class="indigo infoBoxTwo">cya - Also Gave Feedback & Suggestions On The Tabs</div>
-            <div class="emeraldGreen infoBoxTwo">The Incremental Nerd - Also Gave Feedback & Suggestions On The Tabs</div>
-            <div class="infoBoxTwo">(The Tabs Didn't Work Very Well)</div>
-          </div>
-          <div class="creditContainer">
-            <div class="infoBoxTwo">Thx Guys!<br>:3</div>
-          </div>
-        </div>
-        
-        <div id="optionsStatsContainer" class="container">
-          <div class="menuBtn">PLACEHOLDER STATS</div>
-        </div>
-      </div>
-
-      <div id="serenityContainer">
-        <div id="serenityMaterialsContainer" class="container">
-          <div id="serenityDisplay" class="infoBoxOne">Serenities:</div>
-          <div id="totalSerenitiesMultDisplay" class="infoBoxTwo">Your Total Serenities (0) Provide a Bonus Multiplier To All Stone Generators of: x1 </div>
-          <div id="highestSerenitiesMultDisplay" class="infoBoxTwo">Your Highest Serenities (0) Past 5 Boost The Stone Generator Bought Exponent: x1</div>
-          <div id="stoneGeneratorExpDisplay" class="infoBoxThree">The Current Stone Generator Exponent: x2</div>
-          <div onclick="toggleSerenityAutobuyer()" id="toggleSerenityAutobuyerBtn" class="menuBtnSm width300"></div>
-        </div>
-
-        <div id="serenityMilestonesContainer" class="container">
-          <div class="containerRow">
-            <div id="serenityMilestone0" class="milestone container border4">Serenity Milestone 0 <div id="serenityMilestone0.1" class="infoBoxFour"></div> <div id="serenityMilestone0.2" class="infoBoxFour"></div> </div>
-            <div id="serenityMilestone1" class="milestone container border4">Serenity Milestone 1 <div id="serenityMilestone1.1" class="infoBoxFour"></div> <div id="serenityMilestone1.2" class="infoBoxFour"></div> </div>
-          </div>
-          <div class="containerRow">
-            <div id="serenityMilestone2" class="milestone container border4">Serenity Milestone 2 <div id="serenityMilestone2.1" class="infoBoxFour"></div> <div id="serenityMilestone2.2" class="infoBoxFour"></div> </div>
-            <div id="serenityMilestone3" class="milestone container border4">Serenity Milestone 2 <div id="serenityMilestone3.1" class="infoBoxFour"></div> <div id="serenityMilestone3.2" class="infoBoxFour"></div> </div>
-          </div>
-          <div id="serenityMilestone4" class="milestone container border4">Serenity Milestone 2 <div id="serenityMilestone4.1" class="infoBoxFour"></div> <div id="serenityMilestone4.2" class="infoBoxFour"></div> </div>
-        </div>
-
-        <div id="serenityUpgradesContainer" class="contianer">
-          <div onclick="buySerenityUpgrade(0)" id="serenityUpgrade0" class="menuBtn serenityUpgradeBtn container border4">Dimension Reset <div id="serenityUpgrade0.1">Cost: 50 Total Serenity</div> <div id="serenityUpgrade0.2">Additional Cost: Reset Serenity Layer</div> <div id="serenityUpgrade0.3" class="infoBoxFour">Effect: Reduce the Starting Particles Formula <br> From: (1e4 * (100 ^ Serenities)) <br> To: (1e4 * (10 ^ Serenities))</div> <div id="serenityUpgrade0.4">Bought: False</div> </div>
-        </div>
-      </div>
-
-      <div id="winnerContainer">
-        <div id="winnerWinContainer" class="container">
-          <div class="infoBoxHuge">YOU WIN</div>
-          <div class="infoBoxOne">You've Escaped The Void</div>
-          <div id="developerMessage" class="infoBoxThree">I Will (Hopefully) Keep Updating This Game Over On Github. <br> In Any Case, I'll Keep Making Games <br> So Join My Discord If You Want To Follow My Development Journey <br> Or Just Do Whatever It Is People Do On Discord</div>
-          <div class="containerRow">
-            <div onclick="inviteToDiscord()" class="menuBtn width300">Discord Link</div>
-            <div onclick="inviteToGithub()" class="menuBtn width300">Github Version</div>
-          </div>
-          <div id="timerHeader" class="infoBoxTwo">Time Played In Various Measurements:</div>
-          <div id="timerDisplay" class="infoBoxTwo">You Played: </div>
-          <a id="hiddenGithubLink" href="https://sebastianh2000.github.io/adarkvoid/" target="_blank"></a>
-        </div>
-      </div>
-    
-    </div>
+  #tabContainer {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0px 5px 0px;
+  }
   
-</body>
-
-<script type="text/javascript" src="javascripts/loop.js"></script>
-<script type="text/javascript" src="javascripts/format.js"></script>
-<script type="text/javascript" src="javascripts/player.js"></script>
-<script type="text/javascript" src="javascripts/main.js"></script>
-<script type="text/javascript" src="javascripts/scaleWindow.js"></script>
-<script type="text/javascript" src="javascripts/tabsAndThemes.js"></script>
-<script type="text/javascript" src="javascripts/serenity.js"></script>
+  .subTabContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 0px 10px 0px;
+  }
   
-</html>
+  
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 0px 10px 0px;
+  }
+  
+  .containerRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 0px 10px 0px;
+  }
+  
+  .tabBtn {
+    background-color: var(--primary-3);
+    transition-duration: .1s;
+    border-radius: 5px;
+    height: 25px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5px 10px;
+    border: solid 2px var(--primary-4);
+  }
+  
+  .tabBtn:hover {
+    background-color: var(--primary-4);
+    cursor: pointer;
+  }
+  
+  .subTabBtn {
+    width: 135px;
+    height: 22.5px;
+    font-size: 16px;
+  }
+
+/*.menuBtnBg {
+  width: 60%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 3px 10px;
+  margin: 10px;
+  background-color: var(--primary-3);
+  transition-duration: .1s;
+}*/
+  
+.menuBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 15px 30px;
+  margin: 10px;
+  background-color: var(--primary-3);
+  transition-duration: .1s;
+}
+
+.menuBtnSm {
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 10px;
+  background-color: var(--primary-3);
+  transition-duration: .1s;
+  cursor: pointer;
+}
+
+.menuBtnTn {
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 2.5px 5px;
+  margin: 10px;
+  background-color: var(--primary-3);
+  transition-duration: .1s;
+  cursor: pointer;
+}
+  
+.menuBtn:hover, .menuBtnSm:hover, .menuBtnTn:hover {
+  background-color: var(--primary-4);
+  cursor: pointer;
+}
+
+.menuBtn.Off, .menuBtnSm.Off, .menuBtnTn.Off {
+  background-color: var(--primary-2);
+  cursor: default;
+}
+
+.menuBtn.Off:hover, .menuBtnSm.Off:hover, .menuBtnTn.Off:hover {
+  background-color: var(--primary-2);
+  cursor: default;
+}
+
+.milestone {
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 15px 30px;
+  margin: 10px;
+  background-color: var(--primary-3);
+}
+
+  #themeBtn {
+    width: 240px;
+  }
+  
+  #themeExample {
+    display: grid;
+  }
+  
+  .themeExampleContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+  }
+  
+  .themeExampleContainer div {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+  }
+  
+  #playtesterContainer {
+    width: 1200px;
+  }
+
+#addStoneBtn {
+  width: 400px;
+  margin: 10px 0px 5px 0px;
+}
+  
+#buyMaxAllStoneGeneratorsBtnContainer {
+  margin: 5px 0px 5px 0px;
+}
+
+#detailedStoneGeneratorsToggle {
+  margin: 5px 0px 30px 0px;
+}
+
+.stoneGenerator {
+  width: 1000px;
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0px 0px 25px 0px;
+}
+
+.stoneGeneratorDetail {
+  margin: 0px;
+  padding: 0px;
+}
+
+.stoneGeneratorDetailsContainer {
+  height: 30px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 10px;
+}
+
+/*.stoneGeneratorBtnSm {
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0px 10px;
+  background-color: var(--primary-3);
+  transition-duration: .1s;
+  cursor: pointer;
+}
+
+.stoneGeneratorBtnSm:hover {
+  background-color: var(--primary-4);
+  cursor: pointer;
+}
+
+.stoneGeneratorBtnSm.Off {
+  background-color: var(--primary-2);
+  cursor: default;
+}
+
+.stoneGeneratorBtnSm.Off:hover {
+  background-color: var(--primary-2);
+  cursor: default;
+}*/
+
+.stoneUpgradeBtn {
+  width: 475px;
+  height: 125px;
+}
+
+.infoBoxHuge {
+  font-size: 32px;
+  font-weight: 900;
+}
+
+#timerHeader {
+  margin: 20px 0px 0px 0px;
+}
+
+#developerMessage {
+  margin: 25px 0px 20px 0px;
+}
+
+  .infoBoxOne {
+    font-size: 24px;
+    font-weight: 800;
+  }
+  
+  .infoBoxTwo {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+.infoBoxThree {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.infoBoxFour {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.infoBoxFive {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.infoBoxFiveNoMargin {
+  font-size: 12px;
+  font-weight: 400;
+  margin: 0px;
+}
+
+.width300 {
+  width: 300px;
+}
+  
+.baja {
+  color: #63FFE0;
+}
+
+.violet {
+  color: #7000D0;
+}
+
+.indigo {
+  color: #613E9A;
+}
+
+.orangeRed {
+  color: #FF8253;
+}
+
+.red {
+  color: #DF0000;
+}
+
+.coolBlue {
+  color: #849BC8;
+}
+
+.royalBlue {
+  color: #1149CB;
+}
+
+.blue {
+  color: #167BBD;
+}
+
+.blueGreen {
+  color: #007359;
+}
+
+.gold {
+  color: #FFD700;
+  font-style: italic;
+}
+
+.limeGreen {
+  color: #78FF00;
+}
+
+.emeraldGreen {
+  color: #01A415;
+}
+
+.creditContainer {
+  margin: 25px 0px 0px 0px;
+}
+  
+#maxBuyInfoBox {
+  margin: 15px 0px 0px 0px;
+}
+
+.border4 {
+  border: solid 2px var(--primary-4);
+}
+
+  /*:root {
+  --primary-0: #070d12;
+  --primary-1: #152737;
+  --primary-2: #23415c;
+  --primary-3: #315a81;
+  --primary-4: #3f74a6;
+  --primary-5: #598ec0;
+  --primary-6: #7ea7ce;
+  --primary-7: #a3c0dc;
+  --primary-8: #c8d9ea;
+  --primary-9: #edf2f8;
+  }
