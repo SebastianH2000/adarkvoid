@@ -6,7 +6,7 @@ let elapsedTime = Date.now() - currentTime;
 function mainLoop() {
   elapsedTime += Date.now() - currentTime;
   currentTime = Date.now();
-  if (elapsedTime > 500) {elapsedTime = 500};
+  if (elapsedTime > 120000) {elapsedTime = 120000};
   while(elapsedTime > 20) {
     elapsedTime -= 20;
     //do stuff
